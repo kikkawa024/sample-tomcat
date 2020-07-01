@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
-                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 cat /tmp/HelloWorld'
+                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 cat /tmp/HelloWorld.java'
                 //sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
             }
         }
