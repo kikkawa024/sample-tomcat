@@ -6,14 +6,14 @@ pipeline {
         deploy_dir='/home/jenkins/deploy'
     }
     stages { // 私の場合、特にステージごとの環境変数は必要なかったです。
-        stage('Check Environment') {
+        stage('build') {
             environment { 
                 LOCAL_VAR='/home/jenkins/target_dir' 
             }
             steps {
                 sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
-                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 cat /tmp/HelloWorld.java'
-                //sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
+                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 mv /tmp/HelloWorld.java /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes'
+                sh 'javac -classpath /opt/apache-tomcat/lib/servlet-api.jar /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes/HelloWorld.java'
             }
         }
     }
