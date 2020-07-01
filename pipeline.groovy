@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     environment {
         work_dir='/home/jenkins/work'
         bundle='/home/jenkins/bin/bundle'
