@@ -14,7 +14,7 @@ pipeline {
                 sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
                 sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 sudo mv /tmp/HelloWorld.java /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes'
                 sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 sudo javac -classpath /opt/apache-tomcat/lib/servlet-api.jar /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes/HelloWorld.java'
-                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 sudo chown tomcat:tomcat /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes/HelloWorld.java'
+                sh 'ssh -i ~/kikkawa-aws.pem ec2-user@172.31.29.70 sudo chown tomcat:tomcat /opt/apache-tomcat/webapps/hellosample/WEB-INF/classes/*'
             }
         }
     }
