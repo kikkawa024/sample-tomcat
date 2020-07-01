@@ -11,7 +11,7 @@ pipeline {
                 LOCAL_VAR='/home/jenkins/target_dir' 
             }
             steps {
-                sh 'printenv'
+                sh 'scp -i ~/kikkawa-aws.pem -p ./HelloWorld.java ec2-user@172.31.29.70:/tmp'
             }
         }
     }
